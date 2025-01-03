@@ -1,5 +1,6 @@
 class Category:
     """Класс для описания категории продуктов"""
+
     name: str
     description: str
     products: list
