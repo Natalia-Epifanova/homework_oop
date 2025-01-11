@@ -10,7 +10,6 @@ class Category:
     category_count = 0
     product_count = 0
 
-
     def __init__(self, name: str, description: str, products: list) -> None:
         """Метод для инициализации экземпляра класса. Задаем значения атрибутам экземпляра."""
         self.name = name
@@ -36,4 +35,3 @@ class Category:
         for element in self.__products:
             product_str += f"{element.name}, {element.price} руб. Остаток: {element.quantity} шт.\n"
         return product_str
-

@@ -9,8 +9,12 @@ def test_category_init(first_category, second_category):
     assert first_category.product_count == 4
     assert second_category.product_count == 4
 
+
 def test_category_products_list_property(first_category):
-    assert first_category.products == "AirPods, 35000.0 руб. Остаток: 3 шт.\nAirPods Pro, 40000.0 руб. Остаток: 2 шт.\n"
+    assert (
+        first_category.products == "AirPods, 35000.0 руб. Остаток: 3 шт.\nAirPods Pro, 40000.0 руб. Остаток: 2 шт.\n"
+    )
+
 
 def test_category_add_product(second_category, one_product):
     assert len(second_category.products_in_list) == 2

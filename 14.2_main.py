@@ -18,9 +18,12 @@ if __name__ == "__main__":
     print(category1.products)
     print(category1.product_count)
 
+    for el in category1.products_in_list:
+        print(el.name, el.quantity, el.price)
+
     new_product = Product.new_product(
-        {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 180000.0,
-         "quantity": 5})
+        {"name": "Samsung Galaxy S23 Ultra", "description": "256GB, Серый цвет, 200MP камера", "price": 190000.0,
+         "quantity": 12}, category1.products_in_list)
     print(new_product.name)
     print(new_product.description)
     print(new_product.price)
@@ -33,6 +36,6 @@ if __name__ == "__main__":
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
-    print(type(category1.products_in_list))
+
     for el in category1.products_in_list:
-        print(el.name)
+        print(el.name, el.quantity, el.price)

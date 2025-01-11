@@ -1,6 +1,3 @@
-
-
-
 class Product:
     """Класс для описания продукта"""
 
@@ -17,27 +14,21 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, info_product: dict):
+    def new_product(cls, info_product: dict, products_list: list) -> "Product":
         """Метод для добавления нового продукта"""
-        # from src.category import Category
-        # products_list = Category.products_in_list
-        # print(f'ТИП ДАННЫХ: {type(products_list)}')
-        # for product in products_list:
-        #     if info_product["name"] in product.name:
-        #         quantity = info_product["quantity"] + product.quantity
-        #         cls.quantity = quantity
-        #     else:
-        #         cls.quantity = info_product["quantity"]
-        # for product in products_list:
-        #     if info_product["name"] == product.name:
-        #         max_price = max(info_product["price"], product.price)
-        #         cls.__price = max_price
-        # cls.name = info_product["name"]
-        # cls.description = info_product["description"]
-        # cls.quantity = info_product["quantity"]
-        # return Product(cls.name, cls.description, cls.quantity, cls.__price)
-
-        return cls(info_product["name"], info_product["description"], info_product["price"], info_product["quantity"])
+        existing_product = None
+        for element in products_list:
+            if element.name == info_product["name"]:
+                existing_product = element
+                break
+        if existing_product:
+            cls.quantity = existing_product.quantity + info_product["quantity"]
+            cls.__price = max(info_product["price"], existing_product.price)
+        else:
+            cls.quantity = info_product["quantity"]
+            cls.__price = info_product["price"]
+        cls.name, cls.description = info_product["name"], info_product["description"]
+        return Product(cls.name, cls.description, cls.__price, cls.quantity)
 
     @property
     def price(self) -> float:
@@ -55,8 +46,3 @@ class Product:
                 self.__price = new_price
         elif new_price > self.__price:
             self.__price = new_price
-
-
-# ДДля данного метода реализуйте проверку наличия такого же товара схожего по имени. В случае если товар уже существует,
-# необходимо сложить количество в наличии старого товара и нового. При конфликте цен выбрать ту, которая является более высокой.
-# Для этого можно в метод передать список товаров, в котором нужно искать дубликаты.
