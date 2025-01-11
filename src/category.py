@@ -1,4 +1,4 @@
-from tests.conftest import product
+from src.product import Product
 
 
 class Category:
@@ -10,7 +10,7 @@ class Category:
     category_count = 0
     product_count = 0
 
-    def __init__(self, name, description, products):
+    def __init__(self, name: str, description: str, products: list) -> None:
         """Метод для инициализации экземпляра класса. Задаем значения атрибутам экземпляра."""
         self.name = name
         self.description = description
@@ -18,15 +18,15 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def add_product(self, new_product):
+    def add_product(self, new_product: Product) -> None:
+        """Метод для добавления нового продукта"""
         self.__products.append(new_product)
         Category.product_count += 1
 
     @property
-    def products(self):
+    def products(self) -> str:
+        """Метод-геттер для получения строки, содержащей информацию о продуктах категории"""
         product_str = ""
         for element in self.__products:
-            product_str += f'{element.name}, {element.price} руб. Остаток: {element.quantity} шт.\n'
+            product_str += f"{element.name}, {element.price} руб. Остаток: {element.quantity} шт.\n"
         return product_str
-
-
