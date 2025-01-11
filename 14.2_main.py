@@ -16,7 +16,6 @@ if __name__ == "__main__":
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category1.add_product(product4)
     print(category1.products)
-    print(type(category1.products))
     print(category1.product_count)
 
     new_product = Product.new_product(
@@ -34,3 +33,6 @@ if __name__ == "__main__":
     print(new_product.price)
     new_product.price = 0
     print(new_product.price)
+    print(type(category1.products_in_list))
+    for el in category1.products_in_list:
+        print(el.name)
