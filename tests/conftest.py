@@ -34,6 +34,11 @@ def second_category():
 
 
 @pytest.fixture()
+def one_product():
+    return Product(name="AppleWatch Series 10", description="pink", price=56000.0, quantity=3)
+
+
+@pytest.fixture()
 def data_for_test():
     return [
         {
