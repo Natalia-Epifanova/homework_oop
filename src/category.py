@@ -19,6 +19,12 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
+    def __str__(self):
+        sum_quantity = 0
+        for element in self.__products:
+            sum_quantity += element.quantity
+        return f"{self.name}, количество продуктов: {sum_quantity} шт."
+
     def add_product(self, new_product: Product) -> None:
         """Метод для добавления нового продукта"""
         self.__products.append(new_product)
@@ -33,5 +39,5 @@ class Category:
         """Метод-геттер для получения строки, содержащей информацию о продуктах категории"""
         product_str = ""
         for element in self.__products:
-            product_str += f"{element.name}, {element.price} руб. Остаток: {element.quantity} шт.\n"
+            product_str += str(element)
         return product_str
