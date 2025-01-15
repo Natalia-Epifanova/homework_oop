@@ -62,3 +62,11 @@ def test_price_setter_with_user_answer_yes(mock_input, one_product):
     mock_input.return_value = "y"
     one_product.price = 20000.0
     assert one_product.price == 20000.0
+
+
+def test_product_str(product):
+    assert str(product) == "AirPods, 35000.0 руб. Остаток: 3 шт."
+
+
+def test_product_add(product, one_product):
+    assert product + one_product == 273000.0
