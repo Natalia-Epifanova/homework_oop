@@ -14,9 +14,7 @@ def test_category_init(first_category, second_category):
 
 
 def test_category_products_list_property(first_category):
-    assert (
-        first_category.products == "AirPods, 35000.0 руб. Остаток: 3 шт.AirPods Pro, 40000.0 руб. Остаток: 2 шт."
-    )
+    assert first_category.products == "AirPods, 35000.0 руб. Остаток: 3 шт.AirPods Pro, 40000.0 руб. Остаток: 2 шт."
 
 
 def test_category_add_product(second_category, one_product):
@@ -24,8 +22,10 @@ def test_category_add_product(second_category, one_product):
     second_category.add_product(one_product)
     assert len(second_category.products_in_list) == 3
 
+
 def test_category_str(first_category):
-    assert str(first_category) == 'Наушники, количество продуктов: 5 шт.'
+    assert str(first_category) == "Наушники, количество продуктов: 5 шт."
+
 
 def test_products_iterator(products_iterator):
     iter(products_iterator)

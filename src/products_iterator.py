@@ -1,22 +1,29 @@
 # from src.category import Category
 # from src.product import Product
+from typing import Any
+
+
 class ProductsIterator:
 
-    def __init__(self, category_obj):
+    def __init__(self, category_obj) -> None:
+        """Метод для инициализации экземпляра класса."""
         self.category = category_obj
         self.index = 0
 
     def __iter__(self):
+        """Возвращает итератор."""
         self.index = 0
         return self
 
-    def __next__(self):
+    def __next__(self) -> Any:
+        """Возвращает продукт из заданной категории"""
         if self.index < len(self.category.products_in_list):
             product_from_list = self.category.products_in_list[self.index]
             self.index += 1
             return product_from_list
         else:
             raise StopIteration
+
 
 # product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
 # product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)

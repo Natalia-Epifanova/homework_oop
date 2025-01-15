@@ -19,7 +19,8 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products)
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Магический метод для отображения информации о количестве продуктов для пользователей"""
         sum_quantity = 0
         for element in self.__products:
             sum_quantity += element.quantity

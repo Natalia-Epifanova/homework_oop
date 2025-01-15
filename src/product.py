@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Product:
     """Класс для описания продукта"""
 
@@ -13,11 +16,13 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-    def __str__(self):
-        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+    def __str__(self) -> str:
+        """Магический метод для отображения информации о продукте для пользователей"""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other):
-        return self.__price * self.quantity + other.price *other.quantity
+    def __add__(self, other) -> Any:
+        """Магический метод для сложения стоимости продуктов"""
+        return self.__price * self.quantity + other.price * other.quantity
 
     @classmethod
     def new_product(cls, info_product: dict, products_list: list) -> "Product":
